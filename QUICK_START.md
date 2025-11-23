@@ -1,64 +1,139 @@
-# 🚀 Quick Start Guide
+# Quick Start Guide - GeoClock
 
-## Run the App Right Now (Local)
+## ⚡ Get Started in 2 Minutes
 
-1. **Open a terminal** in your project folder:
-   ```powershell
-   cd "C:\Users\thoma\OneDrive\Desktop\geoclock"
-   ```
-
-2. **Start the app**:
-   ```powershell
-   npm start
-   ```
-
-3. **You'll see**:
-   - A QR code in the terminal
-   - Expo DevTools opening in your browser
-   - Options to press `a` for Android, `i` for iOS, or `w` for web
-
-4. **To test on your phone**:
-   - Install **Expo Go** app from App Store (iOS) or Google Play (Android)
-   - Scan the QR code with:
-     - **iOS**: Use the Camera app
-     - **Android**: Use the Expo Go app's scanner
-
-5. **To test in browser**:
-   - Press `w` in the terminal, or
-   - Run `npm run web` in a new terminal
-
-## Run in GitHub Codespaces
-
-1. **Push to GitHub first** (see GITHUB_SETUP.md)
-
-2. **Open in Codespaces**:
-   - Go to your GitHub repository
-   - Click "Code" → "Codespaces" → "Create codespace on main"
-
-3. **Wait for setup** (automatic)
-
-4. **Start the app**:
-   ```bash
-   npm start
-   ```
-
-5. **Access the dev server**:
-   - Go to "Ports" tab in Codespaces
-   - Make port 8081 public
-   - Use the public URL with Expo Go app
-
-## Common Commands
-
+### Step 1: Install Dependencies
 ```bash
-npm start          # Start Expo dev server
-npm run web        # Run in web browser
-npm run android    # Run on Android (requires emulator/device)
-npm run ios        # Run on iOS (macOS only, requires simulator)
+npm install
 ```
 
-## Need Help?
+### Step 2: Start the Development Server
+```bash
+npm start
+```
 
-- Check `SETUP.md` for detailed setup instructions
-- Check `GITHUB_SETUP.md` for GitHub repository setup
-- Check `README.md` for full documentation
+### Step 3: Open App
+**Option A - Web Browser (Testing)**
+```bash
+Press 'w' in terminal
+# or
+npm run web
+```
 
+**Option B - Mobile (Full Testing)**
+```bash
+Scan QR code with:
+- iPhone: Camera app
+- Android: Expo Go app
+```
+
+**Option C - Android Emulator**
+```bash
+npm run android
+```
+
+**Option D - iOS Simulator (Mac only)**
+```bash
+npm run ios
+```
+
+---
+
+## 🎯 Create Your First Alarm
+
+1. **Open App** in Expo Go or web browser
+2. **Grant Permissions**
+   - Tap "Settings"
+   - Grant "Location Permission"
+   - Grant "Notification Permission"
+3. **Create Alarm**
+   - Tap "+ Create Alarm"
+   - Enter name (e.g., "Home", "Office")
+   - Tap map to set location
+   - Slide radius to 500m (example)
+   - Tap "Create Alarm"
+4. **Test**
+   - Walk/drive toward the location
+   - When within 500m, notification appears! 🎯
+
+---
+
+## 🔧 Troubleshooting
+
+| Issue | Solution |
+|-------|----------|
+| Location not working | Grant location permission in Settings |
+| Notifications not showing | Grant notification permission in Settings |
+| App won't start | Run `npm install` then `npm start` |
+| Map doesn't show | Normal in web; use Expo Go on mobile |
+| Alarm won't trigger | Check location permission is "While Using" |
+
+---
+
+## 📊 What Each Screen Does
+
+### 🏠 Home Screen
+- **Lists all your alarms**
+- Toggle switch to enable/disable
+- Trash icon to delete
+- Pull down to refresh
+- "+ Create Alarm" button to add new
+
+### ➕ Create Alarm Screen
+- **Name** - Give your alarm a memorable name
+- **Location** - Tap map to pick where alarm triggers
+- **Radius** - Slider from 100m to 5000m
+- **Create** - Save alarm
+
+### ⚙️ Settings Screen
+- Request location permission
+- Request notification permission
+- View app info
+
+---
+
+## 📍 How It Works
+
+**The Magic:** While the app is open, it checks your location every 5 seconds. When you're within the alarm's radius, it sends a notification! 🎯
+
+**The Science:** Uses Haversine formula to calculate exact distance between you and alarm location.
+
+**Smart Alerts:** Won't spam you - only notifies once per visit!
+
+---
+
+## 🐛 Debug Tips
+
+### See Live Logs
+Open Expo DevTools (press `j` in terminal) or check browser console.
+
+### Look for Messages Like:
+```
+✅ Foreground geofence monitoring started
+🎯 Geofence triggered for: Home (245m away)
+📍 Left geofence for: Home
+```
+
+---
+
+## 💾 Your Data
+
+All alarms are **saved locally** on your device using AsyncStorage. No cloud needed!
+
+Alarms survive app restart.
+
+---
+
+## 🚀 Ready to Ship?
+
+When ready for production:
+
+1. Update `app.json` with your app details
+2. Add Google Maps API key for Android maps
+3. Configure Apple location permissions
+4. Build with `eas build` (requires EAS account)
+5. Submit to App Store / Google Play
+
+---
+
+**Questions?** Check console logs and verify permissions in device settings.
